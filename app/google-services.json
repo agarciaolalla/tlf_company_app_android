@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "44604462224",
+    "firebase_url": "https://proyectofinalgrupal-63c08-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "proyectofinalgrupal-63c08",
+    "storage_bucket": "proyectofinalgrupal-63c08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44604462224:android:d5b0a49a8f42b77b657415",
+        "android_client_info": {
+          "package_name": "com.example.proyectofinalgrupal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44604462224-dm25ojpb8klsd5eb7ai7lk63vclun3rb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNII8WhpaYZjWyUK6FNOcWI8aJzHmk7Rk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44604462224-dm25ojpb8klsd5eb7ai7lk63vclun3rb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
