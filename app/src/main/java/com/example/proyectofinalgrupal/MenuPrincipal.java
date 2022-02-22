@@ -9,18 +9,19 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MenuPrincipal extends AppCompatActivity {
 
     private Button logout;
     private FirebaseAuth mAuth;
+    private Button avisos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
-
+        avisos = (Button) findViewById(R.id.webView);
         //MÉTODO PARA CERRAR SESIÓN -ALEJANDRO GARCÍA-
         //Instancio mAuth para hacer uso de la base de datos y el botón de cerrar sesión
         mAuth = FirebaseAuth.getInstance();
@@ -39,8 +40,16 @@ public class MenuPrincipal extends AppCompatActivity {
         //Mediante estas variables tenemos el MAIL del USUARIO que ha iniciado sesión y el ROL que tiene el mismo.
         String getMail = getIntent().getStringExtra("mail");
         String getRol = getIntent().getStringExtra("rol");
-        Log.d("MAIL", getMail);
-        Log.d("ROL",getRol);
+
+        avisos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MenuPrincipal.this, RedireccionExterna.class);
+                i.putExtra("mail", getMail);
+                i.putExtra("rol",getRol);
+                startActivity(i);
+            }
+        });
 
         //Si es basico haces las acciones en este IF
         if(getRol.equals("basico")){
@@ -50,6 +59,9 @@ public class MenuPrincipal extends AppCompatActivity {
         if(getRol.equals("avanzado")){
 
         }
+
+
+
 
 
 

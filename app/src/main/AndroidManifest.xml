@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.proyectofinalgrupal">
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:usesCleartextTraffic="true"
@@ -15,16 +17,13 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-
-
-
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.example.proyectofinalgrupal.Registro"/>
         <activity android:name="com.example.proyectofinalgrupal.MenuPrincipal"/>
+        <activity android:name="com.example.proyectofinalgrupal.RedireccionExterna"/>
+
 
     </application>
 
