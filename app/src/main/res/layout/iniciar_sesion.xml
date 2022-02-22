@@ -43,11 +43,16 @@
         android:id="@+id/iniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesion" />
+        android:text="Iniciar Sesion"
+        android:layout_marginLeft="120dp"
+        android:layout_marginRight="120dp"/>
 
     <Button
         android:id="@+id/registrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar" />
+        android:text="Registrar nuevo usuario"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        />
 </LinearLayout>
