@@ -15,14 +15,17 @@ public class MenuPrincipal extends AppCompatActivity {
     private Button logout;
     private FirebaseAuth mAuth;
     private Button avisos;
-
+    private String getRol ;
+    private String getMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
-        avisos = (Button) findViewById(R.id.webView);
+
         //MÉTODO PARA CERRAR SESIÓN -ALEJANDRO GARCÍA-
+        avisos = (Button) findViewById(R.id.webView);
+
         //Instancio mAuth para hacer uso de la base de datos y el botón de cerrar sesión
         mAuth = FirebaseAuth.getInstance();
         logout = (Button) findViewById(R.id.cerrarSesion);
@@ -38,8 +41,8 @@ public class MenuPrincipal extends AppCompatActivity {
         //FIN DEL MÉTODO PARA CERRAR SESIÓN -ALEJANDRO GARCÍA-
 
         //Mediante estas variables tenemos el MAIL del USUARIO que ha iniciado sesión y el ROL que tiene el mismo.
-        String getMail = getIntent().getStringExtra("mail");
-        String getRol = getIntent().getStringExtra("rol");
+        getMail = getIntent().getStringExtra("mail");
+        getRol = getIntent().getStringExtra("rol");
 
         avisos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +54,7 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
-        //Si es basico haces las acciones en este IF
+       // Si es basico haces las acciones en este IF
         if(getRol.equals("basico")){
 
         }

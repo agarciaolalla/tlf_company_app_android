@@ -24,8 +24,6 @@ public class RedireccionExterna extends AppCompatActivity {
         myWebView.loadUrl("https://o2online.es/");
         String getMail = getIntent().getStringExtra("mail");
         String getRol = getIntent().getStringExtra("rol");
-        Log.d("MAIL", getMail);
-        Log.d("ROL", getRol);
 
         //SI le da al boton volver se pasa a la actividad Menu principal con los atributos de usuario y rol en todo momento.
         volver.setOnClickListener(new View.OnClickListener() {

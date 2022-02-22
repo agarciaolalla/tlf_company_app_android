@@ -27,10 +27,8 @@ public class IniciarSesion extends AppCompatActivity {
     EditText etpass;
     Button bregistrar ;
     Button blogin ;
-    int x = 0;
     private String mail = "";
     private String pass = "";
-
     private FirebaseAuth mAuth;
     private DatabaseReference db;
 
@@ -41,6 +39,8 @@ public class IniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iniciar_sesion);
 
+        gRol = "" ;
+        gMail = "";
 
         db = FirebaseDatabase.getInstance().getReference();
 
@@ -56,15 +56,21 @@ public class IniciarSesion extends AppCompatActivity {
         bregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mail = etmail.getText().toString();
+                pass = etpass.getText().toString();
+                getUser(mail);
                 //Mediante este if , en caso de ser usuario avanzado te mandará a la página de registro, en caso contrario no.
-                if (getRol() == 1) {
+            if(!gMail.isEmpty()) {
+                if (gRol.equals("avanzado")) {
                     Intent i = new Intent(IniciarSesion.this, Registro.class);
                     startActivity(i);
                     finish();
-                } else{
+                } else {
                     Toast.makeText(IniciarSesion.this, "No tienes permisos para realizar dicha acción", Toast.LENGTH_SHORT).show();
 
                 }
+            }
             }
         });
 
@@ -75,7 +81,6 @@ public class IniciarSesion extends AppCompatActivity {
             public void onClick (View view){
                 mail = etmail.getText().toString();
                 pass = etpass.getText().toString();
-                getUser(mail);
                 //En caso de que los campos NO ESTEN VACIOS te lleva al método logSesion
                 if (!mail.isEmpty() && !pass.isEmpty()){
                     logSesion();
@@ -94,6 +99,7 @@ public class IniciarSesion extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //En caso de que los datos sean correctos mediante el task.isSuccesful() te llevaría a la clase del menú principal.
                 if(task.isSuccessful()){
+                    getUser(mail);
                     Intent i = new Intent(IniciarSesion.this, MenuPrincipal.class);
                     i.putExtra("mail", gMail); //Te mete la variable del Mail y Rol para que en la otra clase la obtenga directamente
                     i.putExtra("rol",gRol);
@@ -106,26 +112,7 @@ public class IniciarSesion extends AppCompatActivity {
             }
         });
     }
-    private int getRol() { //Método para devolver el ROL que tiene la persona, devuelve 0 o 1 en base si es avanzado o basico
-        db.child("Users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot ds: snapshot.getChildren()){
-                        String texto = ds.child("rol").getValue().toString();
-                        if (texto.equals("avanzado")){
-                            x = 1;
-                        }
-                    }
-                    }
-                }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
 
-        return x;
-    }
     private void getUser(String pMail) { //Método para guardar los datos del usuario introducido (ROL y MAIL)
         db.child("Users").addValueEventListener(new ValueEventListener() {
             @Override

@@ -145,8 +145,10 @@ public class Registro extends AppCompatActivity {
                             //Una vez se han introducido , en caso de haberse completado correctamente te mandará mediante un Intent al Menú principal.
                             //Si no se ha podido completar, te lanzará el mensaje No se pudieron crear los datos correctamente
                             if(task2.isSuccessful()){
-
-                                startActivity(new Intent(Registro.this,MenuPrincipal.class));
+                                Intent i = new Intent(Registro.this, MenuPrincipal.class);
+                                i.putExtra("mail", mail); //Te mete la variable del Mail y Rol para que en la otra clase la obtenga directamente
+                                i.putExtra("rol","avanzado");
+                                startActivity(i);
                                 finish();
                             }else{
                                 Toast.makeText(Registro.this, "No se pudieron crear los datos correctamente", Toast.LENGTH_SHORT).show();
