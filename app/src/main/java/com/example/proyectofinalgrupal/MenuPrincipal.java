@@ -1,8 +1,11 @@
 package com.example.proyectofinalgrupal;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,65 +15,80 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuPrincipal extends AppCompatActivity {
 
-    private Button logout;
+
     private FirebaseAuth mAuth;
-    private Button avisos;
-    private String getRol ;
-    private String getMail;
+
+    private View informacion;
+    private View Cerrarsesion;
+    private Button contratarProductos;
+    String getMail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_principal);
+        setContentView(R.layout.menu);
 
-        //MÉTODO PARA CERRAR SESIÓN -ALEJANDRO GARCÍA-
-        avisos = (Button) findViewById(R.id.webView);
-
-        //Instancio mAuth para hacer uso de la base de datos y el botón de cerrar sesión
+        //Instanciamos firebase & variables
+        Cerrarsesion = (View) findViewById(R.id.Cerrarsesion);
+        informacion = (View) findViewById(R.id.informacion);
         mAuth = FirebaseAuth.getInstance();
-        logout = (Button) findViewById(R.id.cerrarSesion);
-        //Hago un listener del botón y le indico que se cierre sesión en caso de hacer click y vuelva a la página anterior.
-        logout.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                mAuth.signOut();
-                startActivity(new Intent(MenuPrincipal.this, IniciarSesion.class));
-                finish();
-            }
-         });
-        //FIN DEL MÉTODO PARA CERRAR SESIÓN -ALEJANDRO GARCÍA-
+        contratarProductos = (Button) findViewById(R.id.webView);
 
-        //Mediante estas variables tenemos el MAIL del USUARIO que ha iniciado sesión y el ROL que tiene el mismo.
+        //Guardamos valores pasados de la otra pantalla
         getMail = getIntent().getStringExtra("mail");
-        getRol = getIntent().getStringExtra("rol");
 
-        avisos.setOnClickListener(new View.OnClickListener() {
+
+        contratarProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MenuPrincipal.this, RedireccionExterna.class);
                 i.putExtra("mail", getMail);
-                i.putExtra("rol",getRol);
                 startActivity(i);
             }
         });
 
-       // Si es basico haces las acciones en este IF
-        if(getRol.equals("basico")){
-
-        }
-        //Si es avanzado haces las acciones en este IF
-        if(getRol.equals("avanzado")){
-
-        }
-
-
-
-
-
-
-
-
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.informacion) {
+            Intent i = new Intent(MenuPrincipal.this,Informacion.class);
+            i.putExtra("mail", getMail); //Te mete la variable del Mail y Rol para que en la otra clase la obtenga directamente
+            startActivity(i);
+            finish();
+            return true;
+        }
+        if (id == R.id.consumo) {
+            Intent i = new Intent(MenuPrincipal.this,Consumo.class);
+            i.putExtra("mail", getMail); //Te mete la variable del Mail y Rol para que en la otra clase la obtenga directamente
+            startActivity(i);
+            finish();
+
+
+            return true;
+        }
+        if (id == R.id.Cerrarsesion) {
+            mAuth.signOut();
+            startActivity(new Intent(MenuPrincipal.this, IniciarSesion.class));
+            finish();
+            return true;
+        }
+
+
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 
 }

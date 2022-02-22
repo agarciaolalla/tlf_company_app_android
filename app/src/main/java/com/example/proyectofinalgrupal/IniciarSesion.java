@@ -39,8 +39,7 @@ public class IniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iniciar_sesion);
 
-        gRol = "" ;
-        gMail = "";
+
 
         db = FirebaseDatabase.getInstance().getReference();
 
@@ -56,7 +55,6 @@ public class IniciarSesion extends AppCompatActivity {
         bregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 mail = etmail.getText().toString();
                 pass = etpass.getText().toString();
                 getUser(mail);
@@ -68,7 +66,6 @@ public class IniciarSesion extends AppCompatActivity {
                     finish();
                 } else {
                     Toast.makeText(IniciarSesion.this, "No tienes permisos para realizar dicha acción", Toast.LENGTH_SHORT).show();
-
                 }
             }
             }
@@ -76,13 +73,13 @@ public class IniciarSesion extends AppCompatActivity {
 
         //Creo on Click para el botón iniciar sesión
         blogin.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick (View view){
                 mail = etmail.getText().toString();
                 pass = etpass.getText().toString();
                 //En caso de que los campos NO ESTEN VACIOS te lleva al método logSesion
                 if (!mail.isEmpty() && !pass.isEmpty()){
+                    getUser(mail);
                     logSesion();
                 }else{
                     //Si están vacíos te muestra este mensaje
@@ -99,10 +96,8 @@ public class IniciarSesion extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //En caso de que los datos sean correctos mediante el task.isSuccesful() te llevaría a la clase del menú principal.
                 if(task.isSuccessful()){
-                    getUser(mail);
                     Intent i = new Intent(IniciarSesion.this, MenuPrincipal.class);
-                    i.putExtra("mail", gMail); //Te mete la variable del Mail y Rol para que en la otra clase la obtenga directamente
-                    i.putExtra("rol",gRol);
+                    i.putExtra("mail", gMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
                     startActivity(i);
                     finish();
                 }else{

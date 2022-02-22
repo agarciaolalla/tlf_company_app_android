@@ -27,7 +27,11 @@
         </activity>
         <activity android:name="com.example.proyectofinalgrupal.Registro"/>
         <activity android:name="com.example.proyectofinalgrupal.MenuPrincipal"/>
+        <activity android:name="com.example.proyectofinalgrupal.Consumo"/>
         <activity android:name="com.example.proyectofinalgrupal.RedireccionExterna"/>
+        <activity android:name="com.example.proyectofinalgrupal.MapaTiendas"/>
+        <activity android:name="com.example.proyectofinalgrupal.Informacion"/>
+
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
