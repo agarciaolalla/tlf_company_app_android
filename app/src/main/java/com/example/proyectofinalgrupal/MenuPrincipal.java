@@ -2,6 +2,7 @@ package com.example.proyectofinalgrupal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -34,6 +35,24 @@ public class MenuPrincipal extends AppCompatActivity {
             }
          });
         //FIN DEL MÉTODO PARA CERRAR SESIÓN -ALEJANDRO GARCÍA-
+
+        //Mediante estas variables tenemos el MAIL del USUARIO que ha iniciado sesión y el ROL que tiene el mismo.
+        String getMail = getIntent().getStringExtra("mail");
+        String getRol = getIntent().getStringExtra("rol");
+        Log.d("MAIL", getMail);
+        Log.d("ROL",getRol);
+
+        //Si es basico haces las acciones en este IF
+        if(getRol.equals("basico")){
+
+        }
+        //Si es avanzado haces las acciones en este IF
+        if(getRol.equals("avanzado")){
+
+        }
+
+
+
 
 
 
