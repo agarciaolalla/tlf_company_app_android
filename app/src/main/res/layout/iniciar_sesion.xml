@@ -9,13 +9,15 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="170dp" />
+        android:layout_height="50dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Usuario:"
+        android:text="Correo:"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:textSize="24sp" />
 
     <EditText
@@ -23,6 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:inputType="textEmailAddress" />
 
     <TextView
@@ -30,6 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Contraseña:"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:textSize="24sp" />
 
     <EditText
@@ -37,6 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:inputType="textPassword" />
 
     <Button
@@ -44,15 +52,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Iniciar Sesion"
-        android:layout_marginLeft="120dp"
-        android:layout_marginRight="120dp"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
 
     <Button
         android:id="@+id/registrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registrar nuevo usuario"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_margin="40dp"
         />
 </LinearLayout>

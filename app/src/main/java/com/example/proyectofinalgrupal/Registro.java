@@ -37,24 +37,30 @@ public class Registro extends AppCompatActivity {
     private String mail;
     private String rol;
 
+
+    //Variables necesarias para interactuar con Firebase
     FirebaseAuth mAuth;
     DatabaseReference db;
 
+    //Método OnCeate que se inicia nada más iniciar el programa.
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
 
+        //Inicializamos las variables con el xml
         etName = (EditText) findViewById(R.id.etName);
         etMail = (EditText) findViewById(R.id.etMail);
         etPass = (EditText) findViewById(R.id.editTextTextPassword);
         btRegistrarBasico = (Button) findViewById(R.id.btRegistrarBasico);
         btRegistrarAvanzado = (Button) findViewById(R.id.btRegistrarAvanzado);
 
-
+        //Inicializamos las variables de Firebase
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance().getReference();
 
+        //Creo Dos botones OnClick, uno para crear usuarios con Permisos "AVANZADOS" y otro con permisos "BÁSICOS"
+        //Este es el básico
         btRegistrarBasico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,10 +69,13 @@ public class Registro extends AppCompatActivity {
                 mail = etMail.getText().toString();
                 rol = "basico";
 
-
+            //Indicamos que en caso de que cualquiera de los 3 campos esté vacio te muestre el mensaje "No puedes dejar los campos en blanco"
                 if ( !name.isEmpty() && !mail.isEmpty() && !pass.isEmpty()){
 
+                    //Indicamos que la contraseña no puede tener menos de 6 carácteres meduiante texto.
+
                     if(pass.length() >= 6){
+                        //En caso de pasar los anteriores if, entra en el método "registrarUsuario"
                         registrarUsuario();
                     }else{
                         Toast.makeText(Registro.this, "La contraseña debe tener 6 letras como mínimo", Toast.LENGTH_SHORT).show();
@@ -81,6 +90,7 @@ public class Registro extends AppCompatActivity {
             }
         });
 
+        //Botón de registro avanzado, igual que el anterior pero en el ROL indica que es "avanzado"
         btRegistrarAvanzado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,11 +120,16 @@ public class Registro extends AppCompatActivity {
 
     }
 
+    //Método para registrar usuarios en FIREBASE
     private void registrarUsuario(){
+        //Mediante el mAuth comrpobamos que el mail y la contraseña son correctos, en caso de que por ejemplo pongas un mail sin dominio (sin @gmail.com / @hotmail.com)
+        //Te lanzará el error No se ha podido registrar, inténtalo de nuevo.
         mAuth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>(){
             @Override
             public void onComplete(@NonNull Task<AuthResult> task){
+                //Entramos en el on Complete y hace la comprobación citada anteriormente mediante task.isSuccesful()
                 if(task.isSuccessful()){
+                    //En caso de ser correctos los campos introducideos, mediante este HashMap lo introduce en la base de datos FIREBASE
                     Map<String, Object> map = new HashMap<>();
                     map.put("name", name);
                     map.put("mail", mail);
@@ -123,10 +138,14 @@ public class Registro extends AppCompatActivity {
 
                     String id = mAuth.getCurrentUser().getUid();
 
+                    //Los crea e inserta mediante esta linea db.
                     db.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
+                            //Una vez se han introducido , en caso de haberse completado correctamente te mandará mediante un Intent al Menú principal.
+                            //Si no se ha podido completar, te lanzará el mensaje No se pudieron crear los datos correctamente
                             if(task2.isSuccessful()){
+
                                 startActivity(new Intent(Registro.this,MenuPrincipal.class));
                                 finish();
                             }else{
