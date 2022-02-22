@@ -1,5 +1,7 @@
 package com.example.proyectofinalgrupal;
 
-public class MenuPrincipal {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MenuPrincipal extends AppCompatActivity {
     //Prueba
 }
