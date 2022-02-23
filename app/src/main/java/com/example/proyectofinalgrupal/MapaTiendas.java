@@ -29,14 +29,14 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
     String getRol;
     String getPass;
     String getName;
-
+    int numeroTiendas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mapatiendas);
         // Obtenemos el mapa de forma asíncrona (notificará cuando esté listo)
         SupportMapFragment mapFragment = (SupportMapFragment)
-                getSupportFragmentManager().findFragmentById(R.id.mapa);
+                getSupportFragmentManager().findFragmentById(R.id.mapa5);
         mapFragment.getMapAsync(this);
         volver = (Button) findViewById(R.id.volvermenu);
         getMail = getIntent().getStringExtra("mail");
@@ -52,7 +52,7 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
         Location myLocation = manager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         latitude = myLocation.getLatitude();
         longitude = myLocation.getLongitude();
-
+        //funcion para volver al menu principal
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +78,25 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
         uiSettings.setZoomControlsEnabled(true);
         mapa.setMyLocationEnabled(true);
         LatLng c = new LatLng(latitude, longitude);
+
         mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(c, 15f));
+        LatLng tienda1 = new LatLng(41.6423, -0.8905);
+        LatLng tienda3 = new LatLng(41.6631, -0.9032);
+        LatLng tienda4 = new LatLng(41.6735, -0.8687);
+        LatLng tienda5 = new LatLng(41.6347, -0.8864);
+        LatLng tienda6 = new LatLng(41.6364, -0.9069);
+        LatLng tienda7 = new LatLng(41.6510, -0.9157);
+        LatLng tienda8 = new LatLng(41.6553, -0.8642);
+        LatLng tienda9 = new LatLng(41.6407, -0.8694);
+        LatLng tienda10 = new LatLng(41.6442, -0.8852);
+
+        numeroTiendas = (int) Math.floor(Math.random()*4+1);
+
+        for(int i = 0; i<=numeroTiendas; i++){
+            Double lat = 41.6;
+            Double lon = -0.9;
+            LatLng tienda2 = new LatLng(41.6451, -0.8941);
+        }
 
 
     }

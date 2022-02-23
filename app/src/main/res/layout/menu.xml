@@ -12,11 +12,4 @@
         android:layout_margin="20dp"
         android:text="Contratar productos" />
 
-    <Button
-        android:id="@+id/MostrarTiendas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Mostrar Tiendas" />
-
 </LinearLayout>

@@ -50,7 +50,6 @@ public class MenuPrincipal extends AppCompatActivity {
         informacion = (View) findViewById(R.id.informacion);
         mAuth = FirebaseAuth.getInstance();
         contratarProductos = (Button) findViewById(R.id.webView);
-        mostrarTiendas = (Button) findViewById(R.id.MostrarTiendas);
         mTextViewData = (TextView) findViewById(R.id.textViewData);
 
         //Guardamos valores pasados de la otra pantalla
