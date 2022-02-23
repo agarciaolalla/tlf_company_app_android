@@ -6,14 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Informacion extends AppCompatActivity {
 
@@ -39,7 +35,7 @@ public class Informacion extends AppCompatActivity {
         mTextViewData = (TextView) findViewById(R.id.textViewData);
         db = FirebaseDatabase.getInstance().getReference();
 
-        volver = (Button) findViewById(R.id.button);
+        volver = (Button) findViewById(R.id.volvermenu);
        getMail = getIntent().getStringExtra("mail");
        getName = getIntent().getStringExtra("name");
        getPass = getIntent().getStringExtra("pass");

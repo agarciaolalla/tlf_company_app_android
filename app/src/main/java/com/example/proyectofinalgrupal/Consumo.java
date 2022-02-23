@@ -19,7 +19,7 @@ public class Consumo extends AppCompatActivity {
         setContentView(R.layout.consumo);
         getSupportActionBar().setTitle("Consumo");
 
-        volver = (Button) findViewById(R.id.button);
+        volver = (Button) findViewById(R.id.volvermenu);
         getMail = getIntent().getStringExtra("mail");
 
         volver.setOnClickListener(new View.OnClickListener() {

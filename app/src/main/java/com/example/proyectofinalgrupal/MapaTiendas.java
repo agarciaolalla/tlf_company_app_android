@@ -38,7 +38,7 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
-        volver = (Button) findViewById(R.id.button);
+        volver = (Button) findViewById(R.id.volvermenu);
         getMail = getIntent().getStringExtra("mail");
         getPass = getIntent().getStringExtra("pass");
         getName = getIntent().getStringExtra("name");

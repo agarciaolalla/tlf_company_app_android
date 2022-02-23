@@ -2,7 +2,6 @@ package com.example.proyectofinalgrupal;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -23,7 +22,7 @@ public class RedireccionExterna extends AppCompatActivity {
         setContentView(R.layout.redireccion_externa);
 
 
-        volver = (Button) findViewById(R.id.button);
+        volver = (Button) findViewById(R.id.volvermenu);
         myWebView = (WebView) findViewById(R.id.webView);
         myWebView.loadUrl("https://o2online.es/");
         getMail = getIntent().getStringExtra("mail");
