@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MapaTiendas">
 
     <fragment
         android:id="@+id/mapa5"
-        class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        />
+        android:layout_height="633dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp" />
 
     <Button
         android:id="@+id/volvermenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/common_google_signin_btn_text_dark"
-        android:text="Volver al menu principal"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="627dp" /><![CDATA[
+        android:layout_gravity="center"
+        android:backgroundTint="#F44336"
+        android:text="volver al menu principal"
+        android:textColor="#121212" />
+
+    <![CDATA[
 
     android:layout_width="0dp"
     android:layout_height="0dp"
@@ -31,4 +34,4 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 ]]>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

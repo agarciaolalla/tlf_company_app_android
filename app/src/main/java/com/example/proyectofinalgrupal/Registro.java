@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -157,9 +158,8 @@ public class Registro extends AppCompatActivity {
                             //Una vez se han introducido , en caso de haberse completado correctamente te mandará mediante un Intent al Menú principal.
                             //Si no se ha podido completar, te lanzará el mensaje No se pudieron crear los datos correctamente
                             if(task2.isSuccessful()){
-                                Intent i = new Intent(Registro.this, MenuPrincipal.class);
+                                Intent i = new Intent(Registro.this, IniciarSesion.class);
                                 i.putExtra("mail", mail); //Te mete la variable del Mail y Rol para que en la otra clase la obtenga directamente
-                                i.putExtra("rol","avanzado");
                                 startActivity(i);
                                 finish();
                             }else{
