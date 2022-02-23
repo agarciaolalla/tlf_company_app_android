@@ -37,7 +37,7 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
 
         // Obtenemos el mapa de forma asíncrona (notificará cuando esté listo)
         SupportMapFragment mapFragment = (SupportMapFragment)
-                getSupportFragmentManager().findFragmentById(R.id.mapa5);
+                getSupportFragmentManager().findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
         volver = (Button) findViewById(R.id.volvermenu);
         getMail = getIntent().getStringExtra("mail");
@@ -66,7 +66,14 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
             }
         });
     }
-
+    public void salir(){
+        Intent i = new Intent(MapaTiendas.this, MenuPrincipal.class);
+        i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
+        i.putExtra("rol", getRol);
+        i.putExtra("pass", getPass);
+        i.putExtra("name", getName);
+        startActivity(i);
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -101,6 +108,7 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
 
 
     }
+
 
 
 }
