@@ -36,6 +36,8 @@ public class IniciarSesion extends AppCompatActivity {
     private String gMail ;
     private String gPass;
     private String gName;
+    private String checkRol;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class IniciarSesion extends AppCompatActivity {
         gRol= "";
         gName = "";
         gPass = "";
-
+        checkRol = "";
 
 
 
@@ -68,18 +70,9 @@ public class IniciarSesion extends AppCompatActivity {
             public void onClick(View view) {
                 mail = etmail.getText().toString();
                 pass = etpass.getText().toString();
-                getUser(mail);
-                //Mediante este if , en caso de ser usuario avanzado te mandará a la página de registro, en caso contrario no.
-            if(!gMail.isEmpty()) {
-                if (gRol.equals("avanzado")) {
-                    Intent i = new Intent(IniciarSesion.this, Registro.class);
-                    startActivity(i);
-                    finish();
-                } else {
-                    Toast.makeText(IniciarSesion.this, "No tienes permisos para realizar dicha acción", Toast.LENGTH_SHORT).show();
-                }
+                goMenu(mail);
             }
-            }
+
         });
 
         //Creo on Click para el botón iniciar sesión
@@ -122,11 +115,14 @@ public class IniciarSesion extends AppCompatActivity {
         });
     }
 
-    private void getUser(String pMail) { //Método para guardar los datos del usuario introducido (ROL y MAIL)
+    private void getUser(String pMail)
+    { //Método para guardar los datos del usuario introducido (ROL y MAIL)
         db.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if(snapshot.exists())
+                {
                     for(DataSnapshot ds: snapshot.getChildren()){
                         String texto = ds.child("mail").getValue().toString();
                         if (texto.equals(pMail)){
@@ -134,6 +130,8 @@ public class IniciarSesion extends AppCompatActivity {
                             gRol = ds.child("rol").getValue().toString();
                             gName = ds.child("name").getValue().toString();
                             gPass = ds.child("pass").getValue().toString();
+                            Log.d("rellenando", gMail);
+                            Log.d("rellenando", gRol);
                         }
                     }
                 }
@@ -144,4 +142,37 @@ public class IniciarSesion extends AppCompatActivity {
         });
 
     }
+
+    private void goMenu(String pMail)
+    { //Método para guardar los datos del usuario introducido (ROL y MAIL)
+        db.child("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if(snapshot.exists())
+                {
+                    for(DataSnapshot ds: snapshot.getChildren()){
+                        String texto = ds.child("mail").getValue().toString();
+                        if (texto.equals(pMail)){
+                            checkRol = ds.child("rol").getValue().toString();
+                        }
+                    }
+                }
+                //Mediante este if , en caso de ser usuario avanzado te mandará a la página de registro, en caso contrario no.
+                if (checkRol.equals("avanzado")) {
+                    Intent i = new Intent(IniciarSesion.this, Registro.class);
+                    startActivity(i);
+                    finish();
+                } else {
+                    Toast.makeText(IniciarSesion.this, "No tienes permisos para realizar dicha acción", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+    }
 }
+
+

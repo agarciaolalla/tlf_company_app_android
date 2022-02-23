@@ -4,63 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".IniciarSesion" >
+    tools:context=".IniciarSesion">
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:text="BIENVENIDO"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Correo:"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:text="Correo:"
+        android:textColor="#000000"
         android:textSize="24sp" />
 
     <EditText
         android:id="@+id/CampoEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:ems="10"
         android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/Contraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contraseña:"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:text="Contraseña:"
+        android:textColor="#020202"
         android:textSize="24sp" />
 
     <EditText
         android:id="@+id/CampoContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:ems="10"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/iniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesion"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        />
+        android:backgroundTint="#F44336"
+        android:text="Iniciar Sesion"
+        android:textColor="#090909"
+        app:iconTint="#F3F3F3" />
 
     <Button
         android:id="@+id/registrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar nuevo usuario"
         android:layout_margin="40dp"
-        />
+        android:backgroundTint="#009688"
+        android:text="Registrar nuevo usuario"
+        android:textColor="#000000"
+        app:iconTint="#872020" />
+
 </LinearLayout>

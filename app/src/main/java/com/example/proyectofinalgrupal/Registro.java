@@ -30,6 +30,7 @@ public class Registro extends AppCompatActivity {
     private EditText etPass;
     private Button btRegistrarBasico;
     private Button btRegistrarAvanzado;
+    private Button btVolver;
 
     //Variables de datos a registrar
     private String name;
@@ -54,6 +55,7 @@ public class Registro extends AppCompatActivity {
         etPass = (EditText) findViewById(R.id.editTextTextPassword);
         btRegistrarBasico = (Button) findViewById(R.id.btRegistrarBasico);
         btRegistrarAvanzado = (Button) findViewById(R.id.btRegistrarAvanzado);
+        btVolver = (Button) findViewById(R.id.volver);
 
         //Inicializamos las variables de Firebase
         mAuth = FirebaseAuth.getInstance();
@@ -85,6 +87,16 @@ public class Registro extends AppCompatActivity {
                     Toast.makeText(Registro.this, "No puedes dejar los campos en blanco", Toast.LENGTH_SHORT).show();
                 }
 
+
+
+            }
+        });
+        btVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Registro.this, IniciarSesion.class);
+                startActivity(i);
+                finish();
 
 
             }
