@@ -9,9 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 public class MenuPrincipal extends AppCompatActivity {
 
@@ -22,6 +26,10 @@ public class MenuPrincipal extends AppCompatActivity {
     private View Cerrarsesion;
     private Button contratarProductos;
     String getMail;
+    String getRol;
+    String getPass;
+    String getName;
+
 
 
     @Override
@@ -37,6 +45,9 @@ public class MenuPrincipal extends AppCompatActivity {
 
         //Guardamos valores pasados de la otra pantalla
         getMail = getIntent().getStringExtra("mail");
+        getPass = getIntent().getStringExtra("pass");
+        getName = getIntent().getStringExtra("name");
+        getRol = getIntent().getStringExtra("rol");
 
 
         contratarProductos.setOnClickListener(new View.OnClickListener() {
@@ -61,14 +72,17 @@ public class MenuPrincipal extends AppCompatActivity {
 
         if (id == R.id.informacion) {
             Intent i = new Intent(MenuPrincipal.this,Informacion.class);
-            i.putExtra("mail", getMail); //Te mete la variable del Mail y Rol para que en la otra clase la obtenga directamente
+            i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
+            i.putExtra("rol", getRol);
+            i.putExtra("pass", getPass);
+            i.putExtra("name", getName);
             startActivity(i);
             finish();
             return true;
         }
         if (id == R.id.consumo) {
             Intent i = new Intent(MenuPrincipal.this,Consumo.class);
-            i.putExtra("mail", getMail); //Te mete la variable del Mail y Rol para que en la otra clase la obtenga directamente
+            i.putExtra("mail", getMail);//Te mete la variable del Mail para que en la otra clase la obtenga directamente
             startActivity(i);
             finish();
 

@@ -118,6 +118,7 @@ public class IniciarSesion extends AppCompatActivity {
                         if (texto.equals(pMail)){
                             gMail = ds.child("mail").getValue().toString();
                             gRol = ds.child("rol").getValue().toString();
+
                         }
                     }
                 }
