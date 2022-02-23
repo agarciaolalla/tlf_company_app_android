@@ -12,6 +12,9 @@ public class Consumo extends AppCompatActivity {
     Button volver;
     String getMail;
     String getRol;
+    String getName;
+    String getPass;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +22,11 @@ public class Consumo extends AppCompatActivity {
         setContentView(R.layout.consumo);
         getSupportActionBar().setTitle("Consumo");
 
-        volver = (Button) findViewById(R.id.button);
+        volver = (Button) findViewById(R.id.volvermenu);
         getMail = getIntent().getStringExtra("mail");
+        getName = getIntent().getStringExtra("name");
+        getPass = getIntent().getStringExtra("pass");
+        getRol= getIntent().getStringExtra("rol");
 
         volver.setOnClickListener(new View.OnClickListener() {
             @Override

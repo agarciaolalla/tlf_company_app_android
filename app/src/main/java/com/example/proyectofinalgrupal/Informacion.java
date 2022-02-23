@@ -6,14 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Informacion extends AppCompatActivity {
 
@@ -24,6 +20,10 @@ public class Informacion extends AppCompatActivity {
    private String getName;
     private DatabaseReference db;
     private TextView mTextViewData;
+    private TextView mTextViewData2;
+    private TextView mTextViewData3;
+    private TextView mTextViewData4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +37,22 @@ public class Informacion extends AppCompatActivity {
         getName = "";
 
         mTextViewData = (TextView) findViewById(R.id.textViewData);
+        mTextViewData2 = (TextView) findViewById(R.id.textViewData2);
+        mTextViewData3 = (TextView) findViewById(R.id.textViewData3);
+        mTextViewData4 = (TextView) findViewById(R.id.textViewData4);
         db = FirebaseDatabase.getInstance().getReference();
 
-        volver = (Button) findViewById(R.id.button);
+        volver = (Button) findViewById(R.id.volvermenu);
        getMail = getIntent().getStringExtra("mail");
        getName = getIntent().getStringExtra("name");
        getPass = getIntent().getStringExtra("pass");
         getRol= getIntent().getStringExtra("rol");
 
-        mTextViewData.setText("El mail es: " +getMail + "El nombre es: " + getName + getPass + getRol);
+        mTextViewData.setText(" El mail es: " + getMail);
+        mTextViewData2.setText(" El nombre es: " + getName);
+        mTextViewData3.setText(" El password es: " + getPass);
+        mTextViewData4.setText(" El Rol es: " + getRol);
+
 
         volver.setOnClickListener(new View.OnClickListener() {
                 @Override

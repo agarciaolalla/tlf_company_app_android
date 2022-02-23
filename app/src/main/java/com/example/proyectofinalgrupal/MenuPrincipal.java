@@ -64,7 +64,10 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MenuPrincipal.this, RedireccionExterna.class);
-                i.putExtra("mail", getMail);
+                i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
+                i.putExtra("rol", getRol);
+                i.putExtra("pass", getPass);
+                i.putExtra("name", getName);
                 startActivity(i);
             }
         });
@@ -72,7 +75,10 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MenuPrincipal.this, MapaTiendas.class);
-                i.putExtra("mail", getMail);
+                i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
+                i.putExtra("rol", getRol);
+                i.putExtra("pass", getPass);
+                i.putExtra("name", getName);
                 startActivity(i);
             }
         });
@@ -98,6 +104,13 @@ public class MenuPrincipal extends AppCompatActivity {
         }
         if (id == R.id.consumo) {
             Intent i = new Intent(MenuPrincipal.this,Consumo.class);
+            i.putExtra("mail", getMail);//Te mete la variable del Mail para que en la otra clase la obtenga directamente
+            startActivity(i);
+            finish();
+            return true;
+        }
+        if (id == R.id.MostrarTiendas) {
+            Intent i = new Intent(MenuPrincipal.this,MapaTiendas.class);
             i.putExtra("mail", getMail);//Te mete la variable del Mail para que en la otra clase la obtenga directamente
             startActivity(i);
             finish();
