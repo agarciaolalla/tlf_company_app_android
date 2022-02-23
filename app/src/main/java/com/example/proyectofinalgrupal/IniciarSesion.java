@@ -38,12 +38,11 @@ public class IniciarSesion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iniciar_sesion);
-        //INICIALIZO VARIABLES PARA EVITAR NULLPOINTEREXCEPTION
 
-        gRol = "";
-        gMail = "";
-        mail = "";
-        pass = "";
+        mail ="";
+        pass="";
+
+
 
 
         db = FirebaseDatabase.getInstance().getReference();
