@@ -31,17 +31,21 @@ public class Informacion extends AppCompatActivity {
         setContentView(R.layout.informacion);
         getSupportActionBar().setTitle("Informacion");
 
+        getMail = "";
+        getPass = "";
+        getRol = "";
+        getName = "";
+
         mTextViewData = (TextView) findViewById(R.id.textViewData);
         db = FirebaseDatabase.getInstance().getReference();
 
         volver = (Button) findViewById(R.id.button);
-        getMail = getIntent().getStringExtra("mail");
-        getPass = getIntent().getStringExtra("pass");
-        getName = getIntent().getStringExtra("name");
+       getMail = getIntent().getStringExtra("mail");
+       getName = getIntent().getStringExtra("name");
+       getPass = getIntent().getStringExtra("pass");
         getRol= getIntent().getStringExtra("rol");
 
-        mTextViewData.setText("El mail es: " + getMail + "El nombre es: " + getName + "El password es: " + getPass + "El rol es: " + getRol);
-
+        mTextViewData.setText("El mail es: " +getMail + "El nombre es: " + getName + getPass + getRol);
 
         volver.setOnClickListener(new View.OnClickListener() {
                 @Override

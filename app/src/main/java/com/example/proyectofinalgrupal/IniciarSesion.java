@@ -34,13 +34,20 @@ public class IniciarSesion extends AppCompatActivity {
 
     private String gRol ;
     private String gMail ;
+    private String gPass;
+    private String gName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iniciar_sesion);
 
-        mail ="";
-        pass="";
+        mail= "";
+        pass= "";
+        gMail = "";
+        gRol= "";
+        gName = "";
+        gPass = "";
 
 
 
@@ -102,6 +109,9 @@ public class IniciarSesion extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Intent i = new Intent(IniciarSesion.this, MenuPrincipal.class);
                     i.putExtra("mail", gMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
+                    i.putExtra("rol", gRol);
+                    i.putExtra("name", gName);
+                    i.putExtra("pass", gPass);
                     startActivity(i);
                     finish();
                 }else{
@@ -122,7 +132,8 @@ public class IniciarSesion extends AppCompatActivity {
                         if (texto.equals(pMail)){
                             gMail = ds.child("mail").getValue().toString();
                             gRol = ds.child("rol").getValue().toString();
-
+                            gName = ds.child("name").getValue().toString();
+                            gPass = ds.child("pass").getValue().toString();
                         }
                     }
                 }

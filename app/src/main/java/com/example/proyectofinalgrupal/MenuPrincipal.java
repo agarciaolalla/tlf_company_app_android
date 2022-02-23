@@ -40,12 +40,18 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
+        getMail = "";
+        getPass = "";
+        getRol = "";
+        getName = "";
+
         //Instanciamos firebase & variables
         Cerrarsesion = (View) findViewById(R.id.Cerrarsesion);
         informacion = (View) findViewById(R.id.informacion);
         mAuth = FirebaseAuth.getInstance();
         contratarProductos = (Button) findViewById(R.id.webView);
         mostrarTiendas = (Button) findViewById(R.id.MostrarTiendas);
+        mTextViewData = (TextView) findViewById(R.id.textViewData);
 
         //Guardamos valores pasados de la otra pantalla
         getMail = getIntent().getStringExtra("mail");
@@ -81,26 +87,6 @@ public class MenuPrincipal extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.informacion) {
-            db.child("Users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-
-                    getName = snapshot.child("name").getValue().toString();
-                    getMail = snapshot.child("mail").getValue().toString();
-                    getPass= snapshot.child("pass").getValue().toString();
-                    getRol = snapshot.child("rol").getValue().toString();
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
             Intent i = new Intent(MenuPrincipal.this,Informacion.class);
             i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
             i.putExtra("rol", getRol);
@@ -115,8 +101,6 @@ public class MenuPrincipal extends AppCompatActivity {
             i.putExtra("mail", getMail);//Te mete la variable del Mail para que en la otra clase la obtenga directamente
             startActivity(i);
             finish();
-
-
             return true;
         }
         if (id == R.id.Cerrarsesion) {
