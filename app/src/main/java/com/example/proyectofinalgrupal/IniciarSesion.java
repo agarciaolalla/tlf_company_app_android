@@ -27,8 +27,8 @@ public class IniciarSesion extends AppCompatActivity {
     EditText etpass;
     Button bregistrar ;
     Button blogin ;
-    private String mail = "";
-    private String pass = "";
+    private String mail;
+    private String pass;
     private FirebaseAuth mAuth;
     private DatabaseReference db;
 
@@ -38,7 +38,11 @@ public class IniciarSesion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iniciar_sesion);
-
+        //Inicializo todos los String para que no haya nullPointerException
+        gRol ="";
+        gMail = "";
+        mail = "";
+        pass = "";
 
 
         db = FirebaseDatabase.getInstance().getReference();
@@ -59,7 +63,10 @@ public class IniciarSesion extends AppCompatActivity {
                 pass = etpass.getText().toString();
                 getUser(mail);
                 //Mediante este if , en caso de ser usuario avanzado te mandará a la página de registro, en caso contrario no.
-            if(!gMail.isEmpty()) {
+                Log.d("Texto", gRol);
+                Log.d("Texto2", gMail);
+
+                if(!gMail.isEmpty()) {
                 if (gRol.equals("avanzado")) {
                     Intent i = new Intent(IniciarSesion.this, Registro.class);
                     startActivity(i);
@@ -113,12 +120,11 @@ public class IniciarSesion extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    for(DataSnapshot ds: snapshot.getChildren()){
+                    for(DataSnapshot ds: snapshot.getChildren()) {
                         String texto = ds.child("mail").getValue().toString();
-                        if (texto.equals(pMail)){
+                        if (texto.equals(pMail)) {
                             gMail = ds.child("mail").getValue().toString();
                             gRol = ds.child("rol").getValue().toString();
-
                         }
                     }
                 }
