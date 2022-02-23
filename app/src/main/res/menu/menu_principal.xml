@@ -15,6 +15,10 @@
             android:id="@+id/consumo"
             android:title="Consumo"
             android:orderInCategory="200"/>
+        <item
+            android:id="@+id/MostrarTiendas"
+            android:title="Mostrar Tiendas"
+            android:orderInCategory="200"/>
 
         <item android:id="@+id/Cerrarsesion"
             android:title="Cerrar sesion"

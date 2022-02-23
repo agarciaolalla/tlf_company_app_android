@@ -109,6 +109,13 @@ public class MenuPrincipal extends AppCompatActivity {
             finish();
             return true;
         }
+        if (id == R.id.MostrarTiendas) {
+            Intent i = new Intent(MenuPrincipal.this,MapaTiendas.class);
+            i.putExtra("mail", getMail);//Te mete la variable del Mail para que en la otra clase la obtenga directamente
+            startActivity(i);
+            finish();
+            return true;
+        }
         if (id == R.id.Cerrarsesion) {
             mAuth.signOut();
             startActivity(new Intent(MenuPrincipal.this, IniciarSesion.class));
