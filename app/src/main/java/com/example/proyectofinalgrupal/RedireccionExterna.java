@@ -13,6 +13,10 @@ public class RedireccionExterna extends AppCompatActivity {
 
     WebView myWebView;
     Button volver;
+    String getMail;
+    String getRol;
+    String getPass;
+    String getName;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,16 +26,20 @@ public class RedireccionExterna extends AppCompatActivity {
         volver = (Button) findViewById(R.id.button);
         myWebView = (WebView) findViewById(R.id.webView);
         myWebView.loadUrl("https://o2online.es/");
-        String getMail = getIntent().getStringExtra("mail");
-        String getRol = getIntent().getStringExtra("rol");
+        getMail = getIntent().getStringExtra("mail");
+        getPass = getIntent().getStringExtra("pass");
+        getName = getIntent().getStringExtra("name");
+        getRol = getIntent().getStringExtra("rol");
 
         //SI le da al boton volver se pasa a la actividad Menu principal con los atributos de usuario y rol en todo momento.
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(RedireccionExterna.this, MenuPrincipal.class);
-                i.putExtra("mail", getMail);
+                i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
                 i.putExtra("rol", getRol);
+                i.putExtra("pass", getPass);
+                i.putExtra("name", getName);
                 startActivity(i);
             }
         });

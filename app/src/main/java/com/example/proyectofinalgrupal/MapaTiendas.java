@@ -25,6 +25,10 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
     Double longitude;
     Double latitude;
     Button volver;
+    String getMail;
+    String getRol;
+    String getPass;
+    String getName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +39,11 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
                 getSupportFragmentManager().findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
         volver = (Button) findViewById(R.id.button);
-        String getMail = getIntent().getStringExtra("mail");
-        String getRol = getIntent().getStringExtra("rol");
+        getMail = getIntent().getStringExtra("mail");
+        getPass = getIntent().getStringExtra("pass");
+        getName = getIntent().getStringExtra("name");
+        getRol = getIntent().getStringExtra("rol");
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
@@ -50,8 +57,10 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MapaTiendas.this, MenuPrincipal.class);
-                i.putExtra("mail", getMail);
+                i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
                 i.putExtra("rol", getRol);
+                i.putExtra("pass", getPass);
+                i.putExtra("name", getName);
                 startActivity(i);
             }
         });
