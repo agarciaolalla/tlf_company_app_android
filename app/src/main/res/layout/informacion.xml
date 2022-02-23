@@ -14,8 +14,64 @@
 
     <TextView
         android:id="@+id/textViewData"
-        android:layout_width="322dp"
-        android:layout_height="317dp"
-        android:textColor="#D60000"
-        android:textColorHint="#0C3D9F" />
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textColorHint="#0C3D9F"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+    <TextView
+
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textColorHint="#0C3D9F"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+    <TextView
+        android:id="@+id/textViewData2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textColorHint="#0C3D9F"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+    <TextView
+
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textColorHint="#0C3D9F"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+    <TextView
+        android:id="@+id/textViewData3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textColorHint="#0C3D9F"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textColorHint="#0C3D9F"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+    <TextView
+        android:id="@+id/textViewData4"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textColorHint="#0C3D9F"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textColorHint="#0C3D9F"
+        android:textSize="20sp"
+        android:textStyle="italic" />
 </LinearLayout>
