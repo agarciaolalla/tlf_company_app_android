@@ -17,6 +17,7 @@ public class Consumo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consumo);
+        getSupportActionBar().setTitle("Consumo");
 
         volver = (Button) findViewById(R.id.button);
         getMail = getIntent().getStringExtra("mail");

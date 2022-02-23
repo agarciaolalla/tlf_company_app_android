@@ -16,4 +16,14 @@
         tools:layout_editor_absoluteY="2dp"
          />
 
+    <TextView
+        android:id="@+id/textViewData"
+        android:layout_width="322dp"
+        android:layout_height="317dp"
+        android:textColor="#D60000"
+        android:textColorHint="#0C3D9F"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="169dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

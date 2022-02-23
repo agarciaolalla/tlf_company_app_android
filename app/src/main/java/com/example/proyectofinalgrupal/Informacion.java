@@ -18,10 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 public class Informacion extends AppCompatActivity {
 
     Button volver;
-    String getMail;
-    String getRol;
-    String getPass;
-    String getName;
+    private String getMail;
+   private String getRol;
+    private String getPass;
+   private String getName;
     private DatabaseReference db;
     private TextView mTextViewData;
 
@@ -29,6 +29,7 @@ public class Informacion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.informacion);
+        getSupportActionBar().setTitle("Informacion");
 
         mTextViewData = (TextView) findViewById(R.id.textViewData);
         db = FirebaseDatabase.getInstance().getReference();
@@ -37,7 +38,7 @@ public class Informacion extends AppCompatActivity {
         getMail = getIntent().getStringExtra("mail");
         getPass = getIntent().getStringExtra("pass");
         getName = getIntent().getStringExtra("name");
-        getRol = getIntent().getStringExtra("rol");
+        getRol= getIntent().getStringExtra("rol");
 
         db.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -46,7 +47,7 @@ public class Informacion extends AppCompatActivity {
 
                     getName = snapshot.child("name").getValue().toString();
                     getMail = snapshot.child("mail").getValue().toString();
-                    getPass = snapshot.child("pass").getValue().toString();
+                    getPass= snapshot.child("pass").getValue().toString();
                     getRol = snapshot.child("rol").getValue().toString();
 
                     mTextViewData.setText("El mail es: " + getMail + "El nombre es: " + getName + "El password es: " + getPass + "El rol es: " + getRol);
@@ -59,6 +60,7 @@ public class Informacion extends AppCompatActivity {
             }
         });
 
+
         volver.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -70,6 +72,8 @@ public class Informacion extends AppCompatActivity {
             });
 
         }
+
+
 
 }
 
