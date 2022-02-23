@@ -1,13 +1,12 @@
 package com.example.proyectofinalgrupal;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public class MenuPrincipal extends AppCompatActivity {
@@ -25,10 +25,13 @@ public class MenuPrincipal extends AppCompatActivity {
     private View informacion;
     private View Cerrarsesion;
     private Button contratarProductos;
+    private Button mostrarTiendas;
     String getMail;
     String getRol;
     String getPass;
     String getName;
+    private DatabaseReference db;
+    private TextView mTextViewData;
 
 
 
@@ -42,6 +45,7 @@ public class MenuPrincipal extends AppCompatActivity {
         informacion = (View) findViewById(R.id.informacion);
         mAuth = FirebaseAuth.getInstance();
         contratarProductos = (Button) findViewById(R.id.webView);
+        mostrarTiendas = (Button) findViewById(R.id.webView);
 
         //Guardamos valores pasados de la otra pantalla
         getMail = getIntent().getStringExtra("mail");
@@ -58,8 +62,14 @@ public class MenuPrincipal extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
+        mostrarTiendas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MenuPrincipal.this, MapaTiendas.class);
+                i.putExtra("mail", getMail);
+                startActivity(i);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,6 +81,26 @@ public class MenuPrincipal extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.informacion) {
+            db.child("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+
+                    getName = snapshot.child("name").getValue().toString();
+                    getMail = snapshot.child("mail").getValue().toString();
+                    getPass= snapshot.child("pass").getValue().toString();
+                    getRol = snapshot.child("rol").getValue().toString();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
             Intent i = new Intent(MenuPrincipal.this,Informacion.class);
             i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
             i.putExtra("rol", getRol);
@@ -95,10 +125,6 @@ public class MenuPrincipal extends AppCompatActivity {
             finish();
             return true;
         }
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -106,3 +132,4 @@ public class MenuPrincipal extends AppCompatActivity {
 
 
 }
+

@@ -40,25 +40,7 @@ public class Informacion extends AppCompatActivity {
         getName = getIntent().getStringExtra("name");
         getRol= getIntent().getStringExtra("rol");
 
-        db.child("Users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-
-                    getName = snapshot.child("name").getValue().toString();
-                    getMail = snapshot.child("mail").getValue().toString();
-                    getPass= snapshot.child("pass").getValue().toString();
-                    getRol = snapshot.child("rol").getValue().toString();
-
-                    mTextViewData.setText("El mail es: " + getMail + "El nombre es: " + getName + "El password es: " + getPass + "El rol es: " + getRol);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        mTextViewData.setText("El mail es: " + getMail + "El nombre es: " + getName + "El password es: " + getPass + "El rol es: " + getRol);
 
 
         volver.setOnClickListener(new View.OnClickListener() {

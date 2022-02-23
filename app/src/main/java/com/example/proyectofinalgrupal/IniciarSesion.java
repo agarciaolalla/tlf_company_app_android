@@ -27,8 +27,8 @@ public class IniciarSesion extends AppCompatActivity {
     EditText etpass;
     Button bregistrar ;
     Button blogin ;
-    private String mail = "";
-    private String pass = "";
+    private String mail ;
+    private String pass ;
     private FirebaseAuth mAuth;
     private DatabaseReference db;
 
@@ -38,7 +38,12 @@ public class IniciarSesion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iniciar_sesion);
+        //INICIALIZO VARIABLES PARA EVITAR NULLPOINTEREXCEPTION
 
+        gRol = "";
+        gMail = "";
+        mail = "";
+        pass = "";
 
 
         db = FirebaseDatabase.getInstance().getReference();
