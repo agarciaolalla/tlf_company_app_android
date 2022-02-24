@@ -18,7 +18,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback {
 
@@ -88,22 +90,21 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
         LatLng c = new LatLng(latitude, longitude);
 
         mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(c, 15f));
-        LatLng tienda1 = new LatLng(41.6423, -0.8905);
-        LatLng tienda3 = new LatLng(41.6631, -0.9032);
-        LatLng tienda4 = new LatLng(41.6735, -0.8687);
-        LatLng tienda5 = new LatLng(41.6347, -0.8864);
-        LatLng tienda6 = new LatLng(41.6364, -0.9069);
-        LatLng tienda7 = new LatLng(41.6510, -0.9157);
-        LatLng tienda8 = new LatLng(41.6553, -0.8642);
-        LatLng tienda9 = new LatLng(41.6407, -0.8694);
-        LatLng tienda10 = new LatLng(41.6442, -0.8852);
 
-        numeroTiendas = (int) Math.floor(Math.random()*4+1);
 
-        for(int i = 0; i<=numeroTiendas; i++){
-            Double lat = 41.6;
-            Double lon = -0.9;
-            LatLng tienda2 = new LatLng(41.6451, -0.8941);
+        LatLng tiendas[] = new LatLng[6];
+
+        numeroTiendas = (int) Math.floor(Math.random()*5+1);
+
+        for(int i = 0; i<=numeroTiendas; i++)
+        {
+            double lat,longi;
+            lat= (Math.floor(Math.random()*999+1)) / 100000;
+            longi  = ( Math.floor(Math.random()*999+1)) / 100000;
+
+            tiendas[i] = new LatLng(latitude + lat, longitude + longi);
+            mapa.addMarker(new MarkerOptions().position(tiendas[i]).title("Tienda de la compañia ").icon(BitmapDescriptorFactory.fromResource(R.drawable.imagentienda)));
+
         }
 
 
