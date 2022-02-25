@@ -21,10 +21,7 @@ import java.util.ArrayList;
 
 public class MenuPrincipal extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private LinearLayoutManager LM;
-    private AdaptadorConsumos adaptador;
-    private RecyclerView.LayoutManager layoutManager;
+
 
     private FirebaseAuth mAuth;
 
@@ -41,7 +38,6 @@ public class MenuPrincipal extends AppCompatActivity {
     //private TextView mTextViewData;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -52,9 +48,6 @@ public class MenuPrincipal extends AppCompatActivity {
         getRol = "";
         getName = "";
 
-        //inicializar recyclerview
-        recyclerView=(RecyclerView) findViewById(R.id.recyclerlista);
-
         //Instanciamos firebase & variables
         Cerrarsesion = (View) findViewById(R.id.Cerrarsesion);
         informacion = (View) findViewById(R.id.informacion);
@@ -64,31 +57,11 @@ public class MenuPrincipal extends AppCompatActivity {
        // mTextViewData = (TextView) findViewById(R.id.textViewData);
         Consumo = (View) findViewById(R.id.consumo);
 
-        //declarar visualizacion de los elementos
-        LM = new LinearLayoutManager(this);
-        LM.setOrientation(RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(LM);
-
         //Guardamos valores pasados de la otra pantalla
         getMail = getIntent().getStringExtra("mail");
         getPass = getIntent().getStringExtra("pass");
         getName = getIntent().getStringExtra("name");
         getRol = getIntent().getStringExtra("rol");
-
-        ArrayList<Consumo> consumos = obtenerConsumos();
-        ArrayList<Consumo> datosUsuarioLogeado = new ArrayList<>();
-
-        for (int i = 0; i < consumos.size(); i++){
-            Consumo datoActual = consumos.get(i);
-            if(consumos.get(i).equals(getMail)){
-                datosUsuarioLogeado.add(datoActual);
-            }
-        }
-
-        //creamos el adaptador
-        adaptador = new AdaptadorConsumos(datosUsuarioLogeado);
-        //asignar el adaptador al recyclerview
-        recyclerView.setAdapter(adaptador);
 
         contratarProductos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,24 +76,7 @@ public class MenuPrincipal extends AppCompatActivity {
         });
     }
 
-    public ArrayList<Consumo> obtenerConsumos(){
-        ArrayList<Consumo> consumos = new ArrayList<>();
 
-        consumos.add(new Consumo("Enero", "65461", "15", "65", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Febrero", "7544", "20", "21", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Marzo", "12346", "1", "2", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Abril", "5461", "63", "8", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Mayo", "99761", "5", "78", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Junio", "665651", "4", "7", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Julio", "256486", "475", "0", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Agosto", "165461", "7", "6", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Septiembre", "134697", "0", "7", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Octubre", "49713", "44", "9", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Noviembre", "971646", "45", "2", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Diciembre", "584976", "16", "1", R.drawable.ic_contact_mail_black_18dp));
-
-        return consumos;
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
@@ -141,7 +97,7 @@ public class MenuPrincipal extends AppCompatActivity {
             return true;
         }
         if (id == R.id.consumo) {
-            Intent i = new Intent(MenuPrincipal.this, Consumo.class);
+            Intent i = new Intent(MenuPrincipal.this, MenuConsumos.class);
             i.putExtra("mail", getMail);//Te mete la variable del Mail para que en la otra clase la obtenga directamente
             i.putExtra("rol", getRol);
             i.putExtra("pass", getPass);

@@ -13,19 +13,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Consumo extends AppCompatActivity{
 
-
-    String getMail;
-    String getRol;
-    String getName;
-    String getPass;
-    private DatabaseReference db;
-
-    TextView txvMes;
-    TextView txvmensajes;
-    TextView txvllamadas;
-    TextView txvMb;
-    ImageView imageItems;
-
     String mes;
     String mb;
     String llamadas;
@@ -76,25 +63,5 @@ public class Consumo extends AppCompatActivity{
         this.mensajes = mensajes;
     }
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
-        getSupportActionBar().setTitle("Consumos");
 
-        db = FirebaseDatabase.getInstance().getReference();
-
-        txvMes = (TextView) findViewById(R.id.txvMes);
-        txvMb = (TextView) findViewById(R.id.txvMb);
-        txvllamadas = (TextView) findViewById(R.id.txvllamadas);
-        txvmensajes = (TextView) findViewById(R.id.txvmensajes);
-        imageItems=(ImageView) findViewById(R.id.imageItems);
-
-
-        getMail = getIntent().getStringExtra("mail");
-        getName = getIntent().getStringExtra("name");
-        getPass = getIntent().getStringExtra("pass");
-        getRol= getIntent().getStringExtra("rol");
-
-
-    }
 }
