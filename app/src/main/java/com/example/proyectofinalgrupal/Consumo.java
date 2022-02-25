@@ -17,19 +17,28 @@ public class Consumo extends AppCompatActivity{
     String mb;
     String llamadas;
     String mensajes;
+    String mail;
 
 
     public Consumo() {
     }
 
-    public Consumo(String mes, String mb, String llamadas, String mensajes, int imageItems) {
+    public Consumo(String mes, String mb, String llamadas, String mensajes,String mail) {
         this.mes = mes;
         this.mb = mb;
         this.llamadas = llamadas;
         this.mensajes = mensajes;
+        this.mail = mail;
 
     }
 
+    public String getMail(){
+        return mail;
+    }
+
+    public void setMail(String mail){
+        this.mail= mail;
+    }
 
     public String getMes() {
         return mes;

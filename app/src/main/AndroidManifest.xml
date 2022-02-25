@@ -28,7 +28,6 @@
         <activity android:name=".Registro" />
         <activity android:name=".MenuPrincipal" />
         <activity android:name=".Consumo" />
-        <activity android:name=".RedireccionExterna" />
         <activity android:name=".MapaTiendas" />
         <activity android:name=".Informacion" />
         <activity android:name=".MenuConsumos" />

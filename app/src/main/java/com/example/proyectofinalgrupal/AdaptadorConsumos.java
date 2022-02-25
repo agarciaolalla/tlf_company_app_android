@@ -56,7 +56,6 @@ public class AdaptadorConsumos extends RecyclerView.Adapter<AdaptadorConsumos.My
         TextView txvmensajes;
         TextView txvllamadas;
         TextView txvMb;
-        ImageView imageItems;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
@@ -64,7 +63,6 @@ public class AdaptadorConsumos extends RecyclerView.Adapter<AdaptadorConsumos.My
             this.txvMb = (TextView) itemView.findViewById(R.id.txvMb);
             this.txvllamadas = (TextView) itemView.findViewById(R.id.txvllamadas);
             this.txvmensajes = (TextView) itemView.findViewById(R.id.txvmensajes);
-            this.imageItems=(ImageView) itemView.findViewById(R.id.imageItems);
         }
         }
 

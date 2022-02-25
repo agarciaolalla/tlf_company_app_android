@@ -44,6 +44,8 @@ public class IniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iniciar_sesion);
 
+        getSupportActionBar().setTitle("O2");
+
         mail= "";
         pass= "";
         gMail = "";

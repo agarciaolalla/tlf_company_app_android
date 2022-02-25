@@ -37,6 +37,7 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mapatiendas);
 
+
         // Obtenemos el mapa de forma asíncrona
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.mapa);

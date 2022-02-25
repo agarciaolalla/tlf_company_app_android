@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 public class MenuPrincipal extends AppCompatActivity {
 
 
+    WebView myWebView;
 
     private FirebaseAuth mAuth;
 
@@ -38,11 +40,17 @@ public class MenuPrincipal extends AppCompatActivity {
     //private TextView mTextViewData;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
+        getSupportActionBar().setTitle("O2");
+
+        myWebView = (WebView) findViewById(R.id.webView);
+        myWebView.loadUrl("https://o2online.es/");
+        getSupportActionBar().setTitle("O2");
         getMail = "";
         getPass = "";
         getRol = "";
@@ -53,7 +61,7 @@ public class MenuPrincipal extends AppCompatActivity {
         informacion = (View) findViewById(R.id.informacion);
         MostrarTiendas = (View) findViewById(R.id.MostrarTiendas);
         mAuth = FirebaseAuth.getInstance();
-        contratarProductos = (Button) findViewById(R.id.webView);
+      //  contratarProductos = (Button) findViewById(R.id.webView);
        // mTextViewData = (TextView) findViewById(R.id.textViewData);
         Consumo = (View) findViewById(R.id.consumo);
 
@@ -63,17 +71,7 @@ public class MenuPrincipal extends AppCompatActivity {
         getName = getIntent().getStringExtra("name");
         getRol = getIntent().getStringExtra("rol");
 
-        contratarProductos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MenuPrincipal.this, RedireccionExterna.class);
-                i.putExtra("mail", getMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
-                i.putExtra("rol", getRol);
-                i.putExtra("pass", getPass);
-                i.putExtra("name", getName);
-                startActivity(i);
-            }
-        });
+
     }
 
 

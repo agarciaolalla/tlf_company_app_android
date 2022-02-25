@@ -70,7 +70,7 @@ public class MenuConsumos extends AppCompatActivity {
 
         for (int i = 0; i < consumos.size(); i++){
             Consumo datoActual = consumos.get(i);
-            if(consumos.get(i).equals(getMail)){
+            if(datoActual.getMail().equals(getMail)){
                 datosUsuarioLogeado.add(datoActual);
             }
         }
@@ -86,18 +86,18 @@ public class MenuConsumos extends AppCompatActivity {
     public ArrayList<Consumo> obtenerConsumos(){
         ArrayList<Consumo> consumos = new ArrayList<>();
 
-        consumos.add(new Consumo("Enero", "65461", "15", "65", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Febrero", "7544", "20", "21", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Marzo", "12346", "1", "2", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Abril", "5461", "63", "8", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Mayo", "99761", "5", "78", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Junio", "665651", "4", "7", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Julio", "256486", "475", "0", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Agosto", "165461", "7", "6", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Septiembre", "134697", "0", "7", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Octubre", "49713", "44", "9", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Noviembre", "971646", "45", "2", R.drawable.ic_contact_mail_black_18dp));
-        consumos.add(new Consumo("Diciembre", "584976", "16", "1", R.drawable.ic_contact_mail_black_18dp));
+        consumos.add(new Consumo("Enero", "65461", "15", "65", "bilal@gmail.com"));
+        consumos.add(new Consumo("Febrero", "7544", "20", "21","bilal@gmail.com"));
+        consumos.add(new Consumo("Marzo", "12346", "1", "2", "bilal@gmail.com"));
+        consumos.add(new Consumo("Abril", "5461", "63", "8","bilal@gmail.com"));
+        consumos.add(new Consumo("Mayo", "99761", "5", "78", "bilal@gmail.com"));
+        consumos.add(new Consumo("Junio", "665651", "4", "7", "bilal@gmail.com"));
+        consumos.add(new Consumo("Julio", "256486", "475", "0","bilal@gmail.com"));
+        consumos.add(new Consumo("Agosto", "165461", "7", "6","bilal@gmail.com"));
+        consumos.add(new Consumo("Septiembre", "134697", "0", "7","bilal@gmail.com"));
+        consumos.add(new Consumo("Octubre", "49713", "44", "9","bilal@gmail.com"));
+        consumos.add(new Consumo("Noviembre", "971646", "45", "2", "bilal@gmail.com"));
+        consumos.add(new Consumo("Diciembre", "584976", "16", "1", "bilal@gmail.com"));
 
         return consumos;
     }
