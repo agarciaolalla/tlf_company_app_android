@@ -35,10 +35,10 @@ public class AdaptadorConsumos extends RecyclerView.Adapter<AdaptadorConsumos.My
         TextView txvllamadas = holder.txvllamadas;
         TextView txvmensajes = holder.txvmensajes;
 
-        String mesText = (consumos.get(position).getMes() + " mes" + "\t\t\t" );
-        String datosText = (consumos.get(position).getMb() + " mb" + "\t\t\t" );
-        String mensajesText = (consumos.get(position).getMensajes() + " minutos" + "\t\t\t");
-        String llamadasText = (consumos.get(position).getLlamadas() + " mensajes" + "\t\t\t" );
+        String mesText = (consumos.get(position).getMes() + " Mes" + "\t\t\t" );
+        String datosText = (consumos.get(position).getMb() + " Mb" + "\t\t\t" );
+        String mensajesText = (consumos.get(position).getMensajes() + " Mensajes" + "\t\t\t");
+        String llamadasText = (consumos.get(position).getLlamadas() + " Llamadas" + "\t\t\t" );
 
         txvMes.setText(consumos.get(position).getMes());
         txvMb.setText(datosText);

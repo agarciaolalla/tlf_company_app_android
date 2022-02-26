@@ -7,6 +7,15 @@
     android:padding="10dp"
     android:id="@+id/linearlayoutfragment">
 
+    <Button
+        android:id="@+id/volvermenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#F44336"
+        android:text="volver al menu principal"
+        android:textColor="#000000" />
+
 
     <TextView
         android:layout_width="match_parent"

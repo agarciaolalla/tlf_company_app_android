@@ -70,14 +70,7 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
             }
         });
     }
-    public void salir(){
-        Intent i = new Intent(MapaTiendas.this, MenuPrincipal.class);
-        i.putExtra("mail", getMail); //Te mete las variables del usuario para que en la otra clase la obtenga directamente
-        i.putExtra("rol", getRol);
-        i.putExtra("pass", getPass);
-        i.putExtra("name", getName);
-        startActivity(i);
-    }
+
 
     //metodo para usar el mapa, creamos una variable mapa y borramos el mapa
     @Override
