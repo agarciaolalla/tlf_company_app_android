@@ -100,7 +100,6 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
 
             tiendas[i] = new LatLng(latitude + lat, longitude + longi);
             mapa.addMarker(new MarkerOptions().position(tiendas[i]).title("Tienda de la compañia ").icon(BitmapDescriptorFactory.fromResource(R.drawable.imagentienda)));
-
         }
 
 
