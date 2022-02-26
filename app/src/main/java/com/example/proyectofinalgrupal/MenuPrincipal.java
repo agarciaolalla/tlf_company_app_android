@@ -9,12 +9,14 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
@@ -29,7 +31,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     private View informacion;
     private View Cerrarsesion;
-    private Button contratarProductos;
+    private Button share;
     private  View MostrarTiendas;
     private View Consumo;
     String getMail;
@@ -47,7 +49,7 @@ public class MenuPrincipal extends AppCompatActivity {
         setContentView(R.layout.menu);
 
         getSupportActionBar().setTitle("O2");
-
+        share = findViewById(R.id.share);
         myWebView = (WebView) findViewById(R.id.webView);
         myWebView.loadUrl("https://o2online.es/");
         getSupportActionBar().setTitle("O2");
@@ -71,7 +73,24 @@ public class MenuPrincipal extends AppCompatActivity {
         getName = getIntent().getStringExtra("name");
         getRol = getIntent().getStringExtra("rol");
 
+        share.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view){
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.setPackage("com.whatsapp");
+                intent.putExtra(Intent.EXTRA_TEXT, "¡Únete a nuestro operador! - https://o2online.es/");
 
+                try {
+                    startActivity(intent);
+                } catch (android.content.ActivityNotFoundException ex) {
+                    ex.printStackTrace();
+
+                    Snackbar.make(view, "El dispositivo no tiene instalado WhatsApp", Snackbar.LENGTH_LONG)
+                            .show();
+                }
+            }
+        });
     }
 
 
