@@ -40,8 +40,6 @@ public class MenuConsumos extends AppCompatActivity {
     ImageView imageItems;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
