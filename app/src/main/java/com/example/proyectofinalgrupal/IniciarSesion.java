@@ -44,8 +44,9 @@ public class IniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iniciar_sesion);
 
-        getSupportActionBar().setTitle("O2");
+        getSupportActionBar().setTitle("O2"); //Indicamos el nombre de la página.
 
+        //Inicializo todas las variables para que no haya NullPointerException
         mail= "";
         pass= "";
         gMail = "";
@@ -85,6 +86,7 @@ public class IniciarSesion extends AppCompatActivity {
                 pass = etpass.getText().toString();
                 //En caso de que los campos NO ESTEN VACIOS te lleva al método logSesion
                 if (!mail.isEmpty() && !pass.isEmpty()){
+                    //Entra en el método GetUser que va a guardar los datos asociados al mail introducido para posteriormente pasarlos mediante el método logSesion
                     getUser(mail);
                     logSesion();
                 }else{
@@ -103,7 +105,8 @@ public class IniciarSesion extends AppCompatActivity {
                 //En caso de que los datos sean correctos mediante el task.isSuccesful() te llevaría a la clase del menú principal.
                 if(task.isSuccessful()){
                     Intent i = new Intent(IniciarSesion.this, MenuPrincipal.class);
-                    i.putExtra("mail", gMail); //Te mete la variable del Mail para que en la otra clase la obtenga directamente
+                    //Mediante putExtra pasamos a la otra clase los datos del mail que hemos introducido al iniciar sesión
+                    i.putExtra("mail", gMail);
                     i.putExtra("rol", gRol);
                     i.putExtra("name", gName);
                     i.putExtra("pass", gPass);
@@ -125,9 +128,11 @@ public class IniciarSesion extends AppCompatActivity {
             {
                 if(snapshot.exists())
                 {
-                    for(DataSnapshot ds: snapshot.getChildren()){
+                    for(DataSnapshot ds: snapshot.getChildren()){ //Mediante un for en la snapshot lo recorremos y hacemos una simple comprobación con el mail introducido, para que te guarde los datos concretos.
+
                         String texto = ds.child("mail").getValue().toString();
                         if (texto.equals(pMail)){
+
                             gMail = ds.child("mail").getValue().toString();
                             gRol = ds.child("rol").getValue().toString();
                             gName = ds.child("name").getValue().toString();
@@ -145,8 +150,8 @@ public class IniciarSesion extends AppCompatActivity {
 
     }
 
-    private void goMenu(String pMail)
-    { //Método para guardar los datos del usuario introducido (ROL y MAIL)
+    private void goMenu(String pMail) // Este método funciona igual que el anterior, pero únicamente te saca el dato "ROL" para ver si es administrador y que te permita pasar a la página de registro.
+    {
         db.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
@@ -156,11 +161,11 @@ public class IniciarSesion extends AppCompatActivity {
                     for(DataSnapshot ds: snapshot.getChildren()){
                         String texto = ds.child("mail").getValue().toString();
                         if (texto.equals(pMail)){
-                            checkRol = ds.child("rol").getValue().toString();
+                            checkRol = ds.child("rol").getValue().toString(); //Aqui comprueba el ROL
                         }
                     }
                 }
-                //Mediante este if , en caso de ser usuario avanzado te mandará a la página de registro, en caso contrario no.
+                //Mediante este if , en caso de ser usuario avanzado te mandará a la página de registro, en caso contrario mostrará el mensaje citado.
                 if (checkRol.equals("avanzado")) {
                     Intent i = new Intent(IniciarSesion.this, Registro.class);
                     startActivity(i);

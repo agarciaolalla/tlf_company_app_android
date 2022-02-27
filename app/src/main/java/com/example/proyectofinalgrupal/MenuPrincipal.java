@@ -48,7 +48,8 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        getSupportActionBar().setTitle("O2");
+        getSupportActionBar().setTitle("O2"); //Indicamos el título de la página.
+
         share = findViewById(R.id.share);
         myWebView = (WebView) findViewById(R.id.webView);
         myWebView.loadUrl("https://o2online.es/");
@@ -63,8 +64,6 @@ public class MenuPrincipal extends AppCompatActivity {
         informacion = (View) findViewById(R.id.informacion);
         MostrarTiendas = (View) findViewById(R.id.MostrarTiendas);
         mAuth = FirebaseAuth.getInstance();
-      //  contratarProductos = (Button) findViewById(R.id.webView);
-       // mTextViewData = (TextView) findViewById(R.id.textViewData);
         Consumo = (View) findViewById(R.id.consumo);
 
         //Guardamos valores pasados de la otra pantalla
@@ -73,6 +72,8 @@ public class MenuPrincipal extends AppCompatActivity {
         getName = getIntent().getStringExtra("name");
         getRol = getIntent().getStringExtra("rol");
 
+
+        //Método para compartir la web de la app mediante un botón por whatsapp
         share.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view){

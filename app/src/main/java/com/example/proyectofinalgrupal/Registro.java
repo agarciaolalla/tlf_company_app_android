@@ -50,7 +50,7 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
 
-        getSupportActionBar().setTitle("Regístrate en O2");
+        getSupportActionBar().setTitle("Regístrate en O2"); //Indicamos el nombre de la página.
 
         //Inicializamos las variables con el xml
         etName = (EditText) findViewById(R.id.etName);
@@ -115,10 +115,11 @@ public class Registro extends AppCompatActivity {
                 rol = "avanzado";
 
 
-                if ( !name.isEmpty() && !mail.isEmpty() && !pass.isEmpty()){
+                if ( !name.isEmpty() && !mail.isEmpty() && !pass.isEmpty()){ //Hace unas simples comprobaciones, te dice que si el nombre/mail/pass no están vacios pasa al siguiente.
 
-                    if(pass.length() >= 6){
-                        registrarUsuario();
+                    if(pass.length() >= 6){ // Comprueba que la contraseña tiene al menos 6 carácteres también.
+
+                        registrarUsuario(); //Si todo está OK pasa registrar el usuario mediante el método citado.
                     }else{
                         Toast.makeText(Registro.this, "La contraseña debe tener 6 letras como mínimo", Toast.LENGTH_SHORT).show();
                     }
