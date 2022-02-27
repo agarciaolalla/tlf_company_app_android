@@ -94,10 +94,14 @@ public class MapaTiendas extends FragmentActivity implements OnMapReadyCallback 
         //bucle de creacion de las tiendas
         for(int i = 0; i<=numeroTiendas; i++)
         {
+            //creamos las variables para la latitud y longitud de la posicion en el mapa
             double lat,longi;
+            //a cada variable le pasamos un metodo math.random el cual sacará un numero entre 1 y 999 el cual dividimos para 100000
+            //al dividir el numero nos dara un resultado de 0,00 y los ultimos 3 numeros aleatorios
             lat= (Math.floor(Math.random()*999+1)) / 100000;
             longi  = ( Math.floor(Math.random()*999+1)) / 100000;
-
+            //a cada tienda le pasaremos los valores anteriores que sumados a la latitud y longitud de la ubicacion del dispositivo
+            // nos dara una tienda aleatoria cada vez que pase por el metodo
             tiendas[i] = new LatLng(latitude + lat, longitude + longi);
             mapa.addMarker(new MarkerOptions().position(tiendas[i]).title("Tienda de la compañia ").icon(BitmapDescriptorFactory.fromResource(R.drawable.imagentienda)));
         }
