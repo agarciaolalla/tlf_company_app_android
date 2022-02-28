@@ -21,6 +21,7 @@ public class Consumo extends AppCompatActivity{
     String mensajes;
     String mail;
 
+    //getters y setters de todas las variables a utilizar en menu consumos
 
     public Consumo() {
     }

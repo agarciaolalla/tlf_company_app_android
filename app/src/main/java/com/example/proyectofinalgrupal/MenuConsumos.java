@@ -46,11 +46,13 @@ public class MenuConsumos extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         getSupportActionBar().setTitle("O2");
 
+        //Inicializo todas las variables para que no haya NullPointerException
         getMail = "";
         getPass = "";
         getRol = "";
         getName = "";
 
+        //inicializo boton volver, y todos los textView
         volver = (Button) findViewById(R.id.volvermenu);
 
         txvMes = (TextView) findViewById(R.id.txvMes);
@@ -73,9 +75,10 @@ public class MenuConsumos extends AppCompatActivity {
         LM.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(LM);
 
+        //Declaro el ArrayList de la clase adaptador
         ArrayList<Consumo> consumos = obtenerConsumos();
         ArrayList<Consumo> datosUsuarioLogeado = new ArrayList<>();
-
+        //creo un for para que segun el usuario logueado muestre los datos correspondientes a cada usuario
         for (int i = 0; i < consumos.size(); i++){
             Consumo datoActual = consumos.get(i);
             if(datoActual.getMail().equals(getMail)){
@@ -89,7 +92,7 @@ public class MenuConsumos extends AppCompatActivity {
         recyclerView.setAdapter(adaptador);
 
 
-
+        //boton volver
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +106,7 @@ public class MenuConsumos extends AppCompatActivity {
 
 
     }
-
+    //asigno las variables al array
     public ArrayList<Consumo> obtenerConsumos(){
         ArrayList<Consumo> consumos = new ArrayList<>();
 

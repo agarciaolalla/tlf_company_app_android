@@ -22,11 +22,13 @@ public class AdaptadorConsumos extends RecyclerView.Adapter<AdaptadorConsumos.My
 
     @NonNull
     @Override
+    //creamos la instancia del archivo xml de diseño de la vista
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_lista,parent,false);
         return new MyViewHolder(view);
     }
 
+    //lanzamos los textView declarados, para luego rellenar los campos en la clase Menu consumos
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position){
 
@@ -50,7 +52,7 @@ public class AdaptadorConsumos extends RecyclerView.Adapter<AdaptadorConsumos.My
     public int getItemCount(){
         return consumos.size();
     }
-
+    //se inicializan los textView para mostrarlos en el RecyclerView
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView txvMes;
         TextView txvmensajes;
