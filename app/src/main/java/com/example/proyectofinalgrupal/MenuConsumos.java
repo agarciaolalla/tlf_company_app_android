@@ -99,6 +99,9 @@ public class MenuConsumos extends AppCompatActivity {
                 Intent i = new Intent(MenuConsumos.this, MenuPrincipal.class);
                 i.putExtra("mail", getMail);
                 i.putExtra("rol", getRol);
+                i.putExtra("pass", getPass);
+                i.putExtra("name", getName);
+
                 startActivity(i);
             }
         });
@@ -158,6 +161,8 @@ public class MenuConsumos extends AppCompatActivity {
         consumos.add(new Consumo("Octubre", "49713", "44", "9","julian@gmail.com"));
         consumos.add(new Consumo("Noviembre", "971646", "45", "2", "julian@gmail.com"));
         consumos.add(new Consumo("Diciembre", "584976", "16", "1", "julian@gmail.com"));
+
+        
 
         return consumos;
     }

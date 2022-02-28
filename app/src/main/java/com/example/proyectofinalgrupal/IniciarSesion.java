@@ -49,10 +49,6 @@ public class IniciarSesion extends AppCompatActivity {
         //Inicializo todas las variables para que no haya NullPointerException
         mail= "";
         pass= "";
-        gMail = "";
-        gRol= "";
-        gName = "";
-        gPass = "";
         checkRol = "";
 
 

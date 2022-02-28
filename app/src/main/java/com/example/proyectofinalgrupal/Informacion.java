@@ -32,11 +32,6 @@ public class Informacion extends AppCompatActivity {
         //le ponemos titulo a la actionbar
         getSupportActionBar().setTitle("Informacion");
 
-        //Inicializo todas las variables para que no haya NullPointerException
-        getMail = "";
-        getPass = "";
-        getRol = "";
-        getName = "";
         //Inicializo campos edittext, botones y la db
         mTextViewData = (TextView) findViewById(R.id.textViewData);
         mTextViewData2 = (TextView) findViewById(R.id.textViewData2);
@@ -64,6 +59,8 @@ public class Informacion extends AppCompatActivity {
                     Intent i = new Intent(Informacion.this, MenuPrincipal.class);
                     i.putExtra("mail", getMail);
                     i.putExtra("rol", getRol);
+                    i.putExtra("pass", getPass);
+                    i.putExtra("name", getName);
                     startActivity(i);
                 }
             });
